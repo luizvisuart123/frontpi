@@ -5,6 +5,8 @@ const Home = () => {
     return (
         <main>
             {/* Conteúdo central */}
+            <p>.</p>
+            <p>.</p>
             <h1>Conteúdo</h1>
             <p>
                 O <strong>Índice de Massa Corporal (IMC)</strong> é uma ferramenta amplamente utilizada para avaliar a relação entre o peso e a altura de uma pessoa. Vamos explorar as vantagens de calcular o IMC e manter-se dentro da faixa de peso ideal:

@@ -11,7 +11,7 @@ const Menu = () => {
           <li><a href="/">Início</a></li>
           <li><a href="/agua">Calcula Consumo Água</a></li>
           <li><a href="/imc">Calcula IMC</a></li>
-          <li><a href="#">Integrantes</a></li>
+          <li><a href="/integrantes">Integrantes</a></li>
         </ul>
       </nav>
     </header>
