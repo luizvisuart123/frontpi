@@ -1,0 +1,6 @@
+{
+    "presets": [
+      "@babel/preset-env", // Transpila para versões anteriores dos navegadores
+      "@babel/preset-react" // Suporte para React
+    ]
+}
