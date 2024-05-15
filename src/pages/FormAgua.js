@@ -1,7 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 
 const FormAgua = () => {
+    const tokenGlobal = useSelector((state) => state.token.value);
     
     return (
         <main>
@@ -15,6 +17,7 @@ const FormAgua = () => {
             <p>Formulário Agua </p>
             <p>Formulário Agua </p>
             <p>Formulário Agua </p>
+            <h1>Token Global: {tokenGlobal}</h1>
         </main>
     );
 };

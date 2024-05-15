@@ -1,14 +1,21 @@
+import { createSlice } from '@reduxjs/toolkit';
+
 const initialState = {
-    // Defina o estado inicial aqui
-  };
-  
-  function rootReducer(state = initialState, action) {
-    switch (action.type) {
-      // Adicione casos para cada tipo de ação que você precisa gerenciar
-      default:
-        return state;
-    }
-  }
-  
-  export default rootReducer;
-  
+  token: null, // Valor inicial do token (null)
+};
+
+const tokenSlice = createSlice({
+  name: 'token',
+  initialState,
+  reducers: {
+    setToken(state, action) {
+      state.token = action.payload; // Atualiza o token com o payload da action
+    },
+    clearToken(state) {
+      state.token = null; // Limpa o token
+    },
+  },
+});
+
+export const { setToken, clearToken } = tokenSlice.actions;
+export default tokenSlice.reducer;

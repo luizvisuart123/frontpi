@@ -24,13 +24,14 @@
   }
   
   .login-popup input {
-    width: 100%;
+    width: 63%;
     padding: 10px;
     border: 1px solid #ccc;
     margin-bottom: 10px;
   }
   
   .login-popup button {
+    margin-bottom: 10px; /* Ajuste o valor conforme necessário */
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
