@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import api from '../services/api'; // Caminho para o seu arquivo api.js
 
+
 const FormImc = () => {
+    //const token = useSelector((state) => state.token.token);
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -9,6 +11,7 @@ const FormImc = () => {
             try {
                 const response = await api.get('/integrantes'); // Rota da sua API
                 setData(response.data);
+                
             } catch (error) {
                 console.error('Erro ao buscar dados da API:', error);
             }

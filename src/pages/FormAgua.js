@@ -1,8 +1,9 @@
 import React from 'react';
-import api from '../services/api'; // Caminho para o seu arquivo api.js
+import { useSelector } from 'react-redux';
 
 
 const FormAgua = () => {
+    const tokenGlobal = useSelector((state) => state.token.value);
     
     return (
         <main>
@@ -16,6 +17,7 @@ const FormAgua = () => {
             <p>Formulário Agua </p>
             <p>Formulário Agua </p>
             <p>Formulário Agua </p>
+            <h1>Token Global: {tokenGlobal}</h1>
         </main>
     );
 };
