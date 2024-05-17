@@ -5,15 +5,13 @@ import { TokenContext } from '../configuracao/TokenContext';
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
-  const [showPopup, setShowPopup] = useState(true);
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState(null); // Adiciona estado para erro de login
+  const [showPopup, setShowPopup] = useState(true);
 
-
-
-  const { setToken } = useContext(TokenContext);
-
+  const { setToken, getToken } = useContext(TokenContext);
   const handleClose = () => setShowPopup(false); // Fecha o popup
+
   const handleLogin = async () => {
 
     try {
@@ -42,11 +40,17 @@ const LoginForm = () => {
     setShowPopup(false); // Fecha o popup após o login
   };
 
+  const currentToken = getToken('token'); // Verifica se há token existente
+
   return (
     <>
-      <button onClick={handleLogin}>Login</button>
+      { // Ocultar popup se houver token
+        !currentToken && (
+          <button onClick={handleLogin}>Login</button>
+        )
+      }
       {
-        showPopup && (
+        !currentToken && (
           <div className="login-popup">
             <div className="login-popup-content">
               <h2>Login</h2>
@@ -55,7 +59,7 @@ const LoginForm = () => {
                 <input type="username" value={username} onChange={(e) => setUsername(e.target.value)} />
                 <label>Senha:</label>
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                {loginError && <p className="error-message">{loginError}</p>}  {/* Exibe mensagem de erro */}
+                {loginError && <p className="error-message">{loginError}</p>}
                 <button type="button" onClick={handleLogin}>Entrar</button>
               </form>
               <button type="button" onClick={handleClose}>Fechar</button>
