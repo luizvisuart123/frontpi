@@ -1,18 +1,21 @@
-// tokenSlice.js
-
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialState = {
+    value: null, // Inicialmente o token está como null
+};
+
 const tokenSlice = createSlice({
-  name: 'token',
-  initialState: { value: '' },
-  reducers: {
-    setTokenValue: (state, action) => {
-      state.value = action.payload;
+    name: 'token',
+    initialState,
+    reducers: {
+        setToken: (state, action) => {
+            state.value = action.payload;
+        },
+        removeToken: (state) => {
+            state.value = null;
+        },
     },
-    // outras ações do seu slice
-  },
 });
 
-export const { setTokenValue } = tokenSlice.actions;
-
+export const { setToken, removeToken } = tokenSlice.actions;
 export default tokenSlice.reducer;

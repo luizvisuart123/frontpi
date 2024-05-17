@@ -1,21 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import '../styles/LoginForm.css';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { TokenContext } from '../configuracao/TokenContext';
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [showPopup, setShowPopup] = useState(true);
   const [password, setPassword] = useState('');
-  const dispatch = useDispatch();
+  const [loginError, setLoginError] = useState(null); // Adiciona estado para erro de login
+
+
+
+  const { setToken } = useContext(TokenContext);
 
   const handleClose = () => setShowPopup(false); // Fecha o popup
-
   const handleLogin = async () => {
+
     try {
       const config = {
         headers: {
-          'Origin': 'http://localhost:3000' // Replace with your front-end origin
+          'Origin': 'http://localhost:3000' // Substitua pela origem do seu front-end
         }
       };
       const response = await axios.post('http://localhost:8080/login', {
@@ -25,13 +29,15 @@ const LoginForm = () => {
       if (response.status === 200) {
         const token = response.data;
         console.log(token);
-        // Se quiser armazenar o token no Redux, use o reducer
-        dispatch({ type: 'LOGIN_SUCCESS', payload: token });
+        setLoginError(null); // Limpa o erro de login
+        setToken(token); // Atualiza o token no contexto
       } else {
+        setLoginError('Login inválido'); // Define a mensagem de erro
         console.error('Não entrou no IF');
       }
     } catch (error) {
       console.error('Error fetching data from API:', error.message);
+      setLoginError('Erro ao efetuar login'); // Define a mensagem de erro genérico
     }
     setShowPopup(false); // Fecha o popup após o login
   };
@@ -49,12 +55,14 @@ const LoginForm = () => {
                 <input type="username" value={username} onChange={(e) => setUsername(e.target.value)} />
                 <label>Senha:</label>
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                {loginError && <p className="error-message">{loginError}</p>}  {/* Exibe mensagem de erro */}
                 <button type="button" onClick={handleLogin}>Entrar</button>
               </form>
               <button type="button" onClick={handleClose}>Fechar</button>
             </div>
           </div>
-        )}
+        )
+      }
     </>
   );
 };

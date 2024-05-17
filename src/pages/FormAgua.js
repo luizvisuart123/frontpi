@@ -1,25 +1,26 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useContext } from 'react';
+import { TokenContext } from '../configuracao/TokenContext';
 
 
 const FormAgua = () => {
-    const tokenGlobal = useSelector((state) => state.token.value);
+    //const { token } = useContext(TokenContext);
+    const { getToken } = useContext(TokenContext);
+
+
+  return (
+    <main>
+      <p>.</p>
+      <p>.</p>
+      <h1>Conteúdo</h1>
+      <p>Formulário Agua </p>
+
     
-    return (
-        <main>
-            {/* Conteúdo central */}
-            <p>.</p>
-            <p>.</p>
-            <h1>Conteúdo</h1>
-            <p>Formulário Agua </p>
-            <p>Formulário Agua </p>
-            <p>Formulário Agua </p>
-            <p>Formulário Agua </p>
-            <p>Formulário Agua </p>
-            <p>Formulário Agua </p>
-            <h1>Token Global: {tokenGlobal}</h1>
-        </main>
-    );
+      <div>
+        {getToken('token')}
+    </div>
+    </main>
+  );
 };
+
 
 export default FormAgua;
