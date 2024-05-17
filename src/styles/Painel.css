@@ -1,0 +1,37 @@
+.container-paineis {
+  display: flex; /* Layout Flexbox */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  flex-direction: column; /* Posiciona em coluna (opcional) */
+}
+
+.painel-expansivel {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  /* position: fixed removida */
+}
+
+.cabecalho {
+  padding: 15px;
+  background-color: #40e0d0;
+  border-radius: 5px 5px 0 0;
+  cursor: pointer;
+}
+
+.cabecalho h2 {
+  margin: 0;
+}
+
+.conteudo {
+  padding: 15px;
+}
+
+.painel-expansivel.expandido .cabecalho {
+  background-color: #40e0d0;
+}
+
+
+div.painel-expansivel:nth-child(1){
+  margin-top: 77px;
+  }

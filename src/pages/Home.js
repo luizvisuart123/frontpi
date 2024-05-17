@@ -1,47 +1,70 @@
-// src/components/Content.js
 import React from 'react';
+import '../styles/LoginForm.css';
+import PainelExpansivel from '../pages/Painel';
+
+const ListaDeItens = () => {
+  return (
+    <ul>
+      <li>Baixo Peso (IMC &lt; 18,5): Desnutrição, fragilidade óssea, deficiências nutricionais.</li>
+      <li>Sobrepeso (IMC 25-29,9): Aumenta o risco de doenças cardiovasculares e diabetes.</li>
+      <li>Obesidade (IMC ≥ 30): Associada a diversas doenças crônicas e complicações.</li>
+    </ul>
+  );
+};
 
 const Home = () => {
-    return (
-        <main>
-            {/* Conteúdo central */}
-            <p>.</p>
-            <p>.</p>
-            <h1>Conteúdo</h1>
-            <p>
-                O <strong>Índice de Massa Corporal (IMC)</strong> é uma ferramenta amplamente utilizada para avaliar a relação entre o peso e a altura de uma pessoa. Vamos explorar as vantagens de calcular o IMC e manter-se dentro da faixa de peso ideal:
+  return (
+    <div>
+      <PainelExpansivel className="'painel-expansivel primeiro'" titulo="Vantagens de calcular o IMC"
+        conteudo={
+          <div>
+            <p>Monitoramento da Saúde</p>
+            <p>Estar na faixa de peso ideal (IMC saudável) está associado a um menor risco de diversas doenças.</p>
+            <h2>Identificação de Riscos</h2>
+            <ListaDeItens />
+            <br />
+            <p>Lembre-se, o IMC é apenas uma ferramenta inicial. Consulte um profissional de saúde para uma avaliação completa.</p>
+          </div>
+        }
+      />
 
-                <ol>
-                    <li>
-                        <strong>Monitoramento da Saúde:</strong> Calcular o IMC ajuda a monitorar sua saúde geral. Estar na faixa de peso ideal (IMC saudável) está associado a menor risco de várias condições de saúde, como doenças cardíacas, diabetes tipo 2, hipertensão e certos tipos de câncer.
-                    </li>
-                    <li>
-                        <strong>Identificação de Riscos:</strong> Um IMC abaixo ou acima da faixa ideal pode indicar riscos à saúde. Por exemplo:
-                        <ul>
-                            <li>
-                                <strong>Baixo Peso (IMC &lt; 18,5):</strong> Pode estar associado à desnutrição, fragilidade óssea e deficiências nutricionais.
-                            </li>
 
-                            <li><strong>Sobrepeso (IMC 25-29,9):</strong> Aumenta o risco de doenças cardiovasculares e diabetes.</li>
-                            <li><strong>Obesidade (IMC ≥ 30):</strong> Está ligada a várias doenças crônicas e complicações.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Controle do Peso:</strong> Calcular o IMC ajuda a definir metas realistas de peso. Manter-se dentro da faixa saudável permite que você monitore seu progresso e tome medidas preventivas.
-                    </li>
-                    <li>
-                        <strong>Melhoria da Qualidade de Vida:</strong> Pessoas com IMC saudável geralmente têm mais energia, melhor mobilidade e menor probabilidade de enfrentar limitações físicas. O peso adequado está associado a melhor qualidade do sono, humor e bem-estar geral.
-                    </li>
-                    <li>
-                        <strong>Apoio à Autoestima:</strong> Estar dentro da faixa de peso ideal pode aumentar a autoestima e a confiança. Sentir-se bem consigo mesmo física e mentalmente é fundamental para uma vida plena.
-                    </li>
-                </ol>
+      <PainelExpansivel titulo="Vantagens de calcular a Água"
+        conteudo={
+          <div>
+            <h2>Saúde em dia:</h2>
+            <ul id="beneficios">
+              <li>Hidratação completa: Corpo funcionando direitinho, sem desidratação, mente afiada e pele radiante.</li>
+              <li>Menos doenças: Pressão arterial controlada, rins saudáveis e peso na medida certa.</li>
+              <li>Mais energia e disposição: Combata a fadiga, o estresse e tenha pique para os treinos.</li>
+            </ul>
 
-                Lembre-se de que o IMC é uma ferramenta inicial e não leva em consideração outros fatores, como composição corporal, massa muscular e distribuição de gordura. Consultar um profissional de saúde é essencial para obter uma avaliação completa e personalizada. Mantenha-se ativo, cuide da sua alimentação e busque um equilíbrio saudável para alcançar o seu melhor estado físico! 🌟
-            </p>
-        </main>
-    );
+            <h2>Produtividade no topo:</h2>
+            <ul id="beneficios">
+              <li>Foco e concentração: Raciocínio rápido, ideias brilhantes e trabalho impecável.</li>
+              <li>Menos estresse: Mente tranquila para você dar o seu melhor.</li>
+            </ul>
+
+            <h2>Viva mais:</h2>
+            <ul id="beneficios">
+              <li>Prevenção de doenças: Beba água e afaste doenças cardíacas, AVC e pedras nos rins.</li>
+            </ul>
+
+            <h2>Hábito fácil e saudável:</h2>
+            <ul id="beneficios">
+              <li>Beba mais água: Aumente sua ingestão de água e sinta os benefícios.</li>
+              <li>Escolha bebidas saudáveis: Diga adeus aos refrigerantes e sucos artificiais.</li>
+              <li>Sustentabilidade: Um hábito simples e bom para o planeta.</li>
+            </ul>
+
+            <p id="resultado">Lembre-se: Consulte um profissional para saber a quantidade ideal de água para você. Beba água e viva mais e melhor!</p>
+          </div>
+        }
+      />
+
+
+    </div>
+  );
 };
 
 export default Home;
-

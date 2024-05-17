@@ -1,16 +1,18 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import '../styles/LoginForm.css';
 import axios from 'axios';
 import { TokenContext } from '../configuracao/TokenContext';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState(null); // Adiciona estado para erro de login
   const [showPopup, setShowPopup] = useState(true);
+  const navigate = useNavigate();
 
   const { setToken, getToken } = useContext(TokenContext);
-  const handleClose = () => setShowPopup(false); // Fecha o popup
+  const handleClose = () => showPopup(false); // Fecha o popup
 
   const handleLogin = async () => {
 
@@ -29,6 +31,8 @@ const LoginForm = () => {
         console.log(token);
         setLoginError(null); // Limpa o erro de login
         setToken(token); // Atualiza o token no contexto
+        
+        navigate("/home");
       } else {
         setLoginError('Login inválido'); // Define a mensagem de erro
         console.error('Não entrou no IF');
