@@ -13,8 +13,9 @@ const FormImc = () => {
 
   const calcularImc = async () => {
     const token = getToken() || '';
-    if (peso > 0 && altura > 0) {
-      const imcCalculado = peso / (altura * altura);
+    const alturaMetro = altura /100;
+    if (alturaMetro > 0 && alturaMetro > 0) {
+      const imcCalculado = peso / (alturaMetro * alturaMetro);
       setImc(imcCalculado.toFixed(2)); // Arredondar para duas casas decimais
 
       const classificacaoImc = determinarClassificacao(imcCalculado);
@@ -27,6 +28,7 @@ const FormImc = () => {
             headers: {
               'Authorization': `Bearer ${token}`,
               'Content-Type': 'application/json',
+              'Origin': 'http://localhost:3000' // Substitua pela origem do seu front-end
             },
             body: JSON.stringify({
               usuario: {
@@ -65,21 +67,6 @@ const FormImc = () => {
     }
   };
 
-  const gerarJson = () => {
-    const dataAtual = new Date().toISOString().slice(0, 10); // Obter data atual
-    const resultado = {
-      usuario: {
-        username: 'user_admin',
-      },
-      data: dataAtual,
-      imc: imc,
-      classificacao: classificacao,
-    };
-
-    // Retornar o JSON como string
-    return JSON.stringify(resultado);
-  };
-
   return (
     <div>
       <h2>Calculadora de IMC</h2>
@@ -98,11 +85,9 @@ const FormImc = () => {
 
       <div>
         <div>
-          <label>Altura (m):</label>
+          <label>Altura (cm):</label>
           <input
-            inputMode='number'
-            min="0"
-            max="3"
+            min="0" 
             value={altura}
             onChange={(e) => {
               const alturaValor = parseFloat(e.target.value) || 0;
