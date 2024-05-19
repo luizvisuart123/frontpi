@@ -1,0 +1,38 @@
+/* styles.css */
+
+/* Estilo para o cabeçalho h2 */
+h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+/* Estilo para as labels */
+label {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+/* Estilo para os inputs */
+input, select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+/* Estilo para o botão */
+button {
+  background-color: #0074d9;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Estilo para o parágrafo */
+p {
+  font-size: 1rem;
+  color: #555;
+}

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import '../styles/estilomenu.css';
+import '../estilos/estilomenu.css';
 import { TokenContext } from '../configuracao/TokenContext';
 
 const Menu = () => {

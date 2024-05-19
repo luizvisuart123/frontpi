@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styles/Painel.css';
+import '../estilos/Painel.css';
 
 const PainelExpansivel = ({ titulo, conteudo }) => {
   const [expandido, setExpandido] = useState(false);

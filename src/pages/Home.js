@@ -1,8 +1,8 @@
 import React from 'react';
-import '../styles/LoginForm.css';
+import '../estilos/LoginForm.css';
 import PainelExpansivel from '../pages/Painel';
 
-const ListaDeItens = () => {
+const ListaDeItensPainelExpansivel1 = () => {
   return (
     <ul>
       <li>Baixo Peso (IMC &lt; 18,5): Desnutrição, fragilidade óssea, deficiências nutricionais.</li>
@@ -21,7 +21,7 @@ const Home = () => {
             <p>Monitoramento da Saúde</p>
             <p>Estar na faixa de peso ideal (IMC saudável) está associado a um menor risco de diversas doenças.</p>
             <h2>Identificação de Riscos</h2>
-            <ListaDeItens />
+            <ListaDeItensPainelExpansivel1 />
             <br />
             <p>Lembre-se, o IMC é apenas uma ferramenta inicial. Consulte um profissional de saúde para uma avaliação completa.</p>
           </div>

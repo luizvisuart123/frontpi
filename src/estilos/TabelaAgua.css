@@ -1,0 +1,91 @@
+/* Arquivo: TabelaAgua.css */
+
+.tabela-agua {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f0f0f0;
+  }
+  
+  /* Estilos adicionais para botões, modal de exclusão, etc. */
+  .modalExclusao {
+    /* Styles for the modal container (hidden by default) */
+    display: none;
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  }
+  
+  .modalExclusao-content {
+    /* Styles for the modal content (the box) */
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  .modalExclusao-header {
+    /* Styles for the modal header */
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .modalExclusao-title {
+    /* Styles for the modal title */
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .modalExclusao-close {
+    /* Styles for the close button */
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .modalExclusao-body {
+    /* Styles for the modal body (where the content is) */
+    padding: 20px;
+  }
+  
+  .modalExclusao-footer {
+    /* Styles for the modal footer (where buttons are) */
+    padding: 20px;
+    text-align: right;
+  }
+  
+  .modalExclusao-button {
+    /* Styles for modal buttons (e.g., confirm, cancel) */
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .modalExclusao-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
