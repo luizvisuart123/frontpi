@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { TokenContext } from '../configuracao/TokenContext';
+import HistoricoImc from './HistoricoImc';
 
 const FormImc = () => {
   const [peso, setPeso] = useState(0); // Estado para o peso do paciente
@@ -7,7 +8,8 @@ const FormImc = () => {
   const [imc, setImc] = useState(0); // Estado para o valor do IMC calculado
   const [classificacao, setClassificacao] = useState(''); // Estado para a classificação do IMC
   const { getToken } = useContext(TokenContext);
-
+  const [calculado, setCalculado] = useState(null);
+  
 
   const calcularImc = async () => {
     const token = getToken() || '';
@@ -120,7 +122,7 @@ const FormImc = () => {
         </div>
       )}
 
-      {gerarJson() && <pre>{gerarJson()}</pre>}
+      <HistoricoImc />
     </div>
   );
 };
