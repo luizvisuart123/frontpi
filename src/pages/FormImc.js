@@ -41,7 +41,7 @@ const FormImc = () => {
             }),
           });
 
-          const responseData = await response.json();
+          //const responseData = await response.json();
           setNovoUsuarioAdicionado(!novoUsuarioAdicionado);
         } catch (error) {
           console.error('Erro ao enviar dados para o backend:', error);
