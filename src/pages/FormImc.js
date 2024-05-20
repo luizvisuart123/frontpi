@@ -8,7 +8,8 @@ const FormImc = () => {
   const [imc, setImc] = useState(0); // Estado para o valor do IMC calculado
   const [classificacao, setClassificacao] = useState(''); // Estado para a classificação do IMC
   const { getToken } = useContext(TokenContext);
-  const [calculado, setCalculado] = useState(null);
+  const [novoUsuarioAdicionado, setNovoUsuarioAdicionado] = useState(false);
+
   
 
   const calcularImc = async () => {
@@ -41,7 +42,7 @@ const FormImc = () => {
           });
 
           const responseData = await response.json();
-          console.log('Resposta do backend:', responseData);
+          setNovoUsuarioAdicionado(!novoUsuarioAdicionado);
         } catch (error) {
           console.error('Erro ao enviar dados para o backend:', error);
         }
@@ -100,7 +101,8 @@ const FormImc = () => {
 
       <button onClick={calcularImc}>Calcular</button>
 
-      <HistoricoImc />
+      {!novoUsuarioAdicionado && <HistoricoImc />}
+      {novoUsuarioAdicionado && <HistoricoImc />}
     </div>
   );
 };
