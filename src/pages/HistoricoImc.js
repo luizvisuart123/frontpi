@@ -1,11 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { useContext } from 'react';
 import { TokenContext } from '../configuracao/TokenContext';
+import ImcChart from './ImcChart';
 
 const HistoricoImc = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { getToken } = useContext(TokenContext);
   const [historico, setHistorico] = useState([]);
+  const formatHistoricoData = (historico) => {
+    const labels = [];
+    const data = [];
+
+    historico.forEach((registro) => {
+      labels.push(registro.dataCalculo); // Exemplo de formatação da data
+      data.push(registro.imc);
+    });
+
+    return { labels, data };
+  };
+  const formattedHistoricoData = formatHistoricoData(historico);
 
   // Fetch historical data on component mount
   useEffect(() => {
@@ -107,7 +120,7 @@ const HistoricoImc = () => {
                 <td>{registro.usuario.nome}</td>
                 <td>{registro.peso}</td>
                 <td>{registro.altura}</td>
-                <td>{registro.imc}</td>
+                <td>{registro.imc.toFixed(2)}</td>
                 <td>{registro.dataCalculo}</td>
                 <td>{registro.classificacaoIMC}</td>
                 <td>
@@ -121,6 +134,7 @@ const HistoricoImc = () => {
           )}
         </tbody>
       </table>
+      <ImcChart historicoData={formattedHistoricoData} />
     </div>
   );
 };
