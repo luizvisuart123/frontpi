@@ -100,13 +100,6 @@ const FormImc = () => {
 
       <button onClick={calcularImc}>Calcular</button>
 
-      {imc > 0 && (
-        <div>
-          <p>IMC: {imc}</p>
-          <p>Classificação: {classificacao}</p>
-        </div>
-      )}
-
       <HistoricoImc />
     </div>
   );

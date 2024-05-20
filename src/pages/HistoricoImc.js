@@ -3,79 +3,23 @@ import { useContext } from 'react';
 import { TokenContext } from '../configuracao/TokenContext';
 
 const HistoricoImc = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const { getToken } = useContext(TokenContext);
   const [historico, setHistorico] = useState([]);
+  const { getToken } = useContext(TokenContext);
 
-  // Fetch historical data on component mount
   useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
+    const fetchHistorico = async () => {
       const token = getToken();
-
-      if (token) {
-        try {
-          const response = await fetch('http://localhost:8080/calculo_imc', {
-            method: 'GET',
-            headers: {
-              Authorization: `Bearer ${token}`,
-              'Content-Type': 'application/json',
-              'Origin': 'http://localhost:3000' // Substitua pela origem do seu front-end
-            },
-          });
-
-          if (response.ok) {
-            const data = await response.json();
-            setHistorico(data);
-          } else {
-            console.error('Erro ao buscar histórico:', response.status);
-          }
-        } catch (error) {
-          console.error('Erro ao buscar histórico:', error);
-        } finally {
-          setIsLoading(false);
-        }
-      } else {
-        console.error('Token não encontrado no contexto.');
-      }
+      const response = await fetch('http://localhost:8080/calculo_imc', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const data = await response.json();
+      setHistorico(data);
     };
 
-    fetchData();
-  }, [getToken]); // Re-fetch data when token changes
-
-  const handleDelete = async (id) => {
-    setIsLoading(true); // Set loading state before deletion
-    const token = getToken();
-  
-    if (token) {
-      try {
-        const response = await fetch(`http://localhost:8080/calculo_imc/${id}`, {
-          method: 'DELETE',
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
-            'Origin': 'http://localhost:3000' // Substitua pela origem do seu front-end
-          },
-        });
-  
-        if (response.ok) {
-          // Update historical data after successful deletion
-          const updatedHistorico = historico.filter((registro) => registro.id !== id);
-          setHistorico(updatedHistorico);
-          console.log('Registro excluído com sucesso.');
-        } else {
-          console.error('Erro ao excluir registro:', response.status);
-        }
-      } catch (error) {
-        console.error('Erro ao excluir registro:', error);
-      } finally {
-        setIsLoading(false); // Reset loading state after deletion
-      }
-    } else {
-      console.error('Token não encontrado no contexto.');
-    }
-  };
-  
+    fetchHistorico();
+  }, [getToken]);
 
   return (
     <div className="historico-imc">
@@ -89,36 +33,19 @@ const HistoricoImc = () => {
             <th>IMC</th>
             <th>Data do Cálculo</th>
             <th>Classificação IMC</th>
-            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
-          {isLoading ? (
-            <tr>
-              <td colSpan="7">Carregando histórico...</td>
+          {historico.map((registro) => (
+            <tr key={registro.id}>
+              <td>{registro.usuario.nome}</td>
+              <td>{registro.peso}</td>
+              <td>{registro.altura}</td>
+              <td>{registro.imc}</td>
+              <td>{registro.dataCalculo}</td>
+              <td>{registro.classificacaoIMC}</td>
             </tr>
-          ) : historico.length === 0 ? (
-            <tr>
-              <td colSpan="7">Não há dados disponíveis.</td>
-            </tr>
-          ) : (
-            historico.map((registro) => (
-              <tr key={registro.id}>
-                <td>{registro.usuario.nome}</td>
-                <td>{registro.usuario.peso}</td>
-                <td>{registro.usuario.altura}</td>
-                <td>{registro.imc}</td>
-                <td>{registro.dataCalculo}</td>
-                <td>{registro.classificacaoIMC}</td>
-                <td>
-                  {/* Implement delete button or functionality here */}
-                  <button onClick={() => handleDelete(registro.id)}>
-                    Excluir
-                  </button>
-                </td>
-              </tr>
-            ))
-          )}
+          ))}
         </tbody>
       </table>
     </div>

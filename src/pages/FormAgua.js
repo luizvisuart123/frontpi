@@ -59,7 +59,7 @@ const FormAgua = () => {
       <h2>Cálculo da Quantidade de Água Diária</h2>
 
       <div>
-        <label>Clima:</label>
+        <label>Clima quente e seco?</label>
         <input type="checkbox" checked={clima} onChange={() => setClima(!clima)} />
       </div>
 
