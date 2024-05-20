@@ -1,37 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import api from '../services/api'; // Caminho para o seu arquivo api.js
+import React from 'react';
+import '../estilos/Integrantes.css';
 
-
-const FormImc = () => {
-    //const token = useSelector((state) => state.token.token);
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const response = await api.get('/integrantes'); // Rota da sua API
-                setData(response.data);
-                
-            } catch (error) {
-                console.error('Erro ao buscar dados da API:', error);
-            }
-        }
-
-        fetchData();
-    }, []);
-
-    return (
-        <div>
-            {/* Renderize os nomes da API aqui */}
-            <p>.</p>
-            <p>.</p>
-            {data.map((name) => (
-                <div key={name}>
-                    <p>{name}</p>
-                </div>
-            ))}
-        </div>
-    );
+const Integrantes = () => {
+  return (
+    <div className="integrantes">
+      <h2>Integrantes</h2>
+      <ul>
+        <li>Bárbara Bueno Brandão</li>
+        <li>Camila Raposo Zambanini</li>
+        <li>Gabriel Fernado Favarim</li>
+        <li>Ingrid Couto Rosin</li>
+        <li>Luiz Carlos dos Santos Neto</li>
+        <li>Renan Kennedy da Silva</li>
+      </ul>
+    </div>
+  );
 };
 
-export default FormImc;
+export default Integrantes;

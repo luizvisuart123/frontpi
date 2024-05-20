@@ -1,0 +1,26 @@
+.integrantes {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Centraliza o texto da lista */
+  margin-top: 94px;
+}
+
+.integrantes h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 24px; /* Aumenta o tamanho da fonte do título */
+}
+
+.integrantes ul {
+  list-style: none;
+  padding: 0;
+}
+
+.integrantes li {
+  margin-bottom: 10px;
+  font-size: 16px; /* Define o tamanho da fonte dos itens */
+  line-height: 1.5; /* Aumenta o espaçamento entre linhas */
+}
