@@ -134,7 +134,6 @@ const HistoricoImc = () => {
           )}
         </tbody>
       </table>
-      <ImcChart historicoData={formattedHistoricoData} />
     </div>
   );
 };
