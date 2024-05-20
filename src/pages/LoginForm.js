@@ -32,7 +32,6 @@ const LoginForm = () => {
         setLoginError(null); // Limpa o erro de login
         setToken(token); // Atualiza o token no contexto
         
-        navigate("/home");
       } else {
         setLoginError('Login inválido'); // Define a mensagem de erro
         console.error('Não entrou no IF');
@@ -42,6 +41,7 @@ const LoginForm = () => {
       setLoginError('Erro ao efetuar login'); // Define a mensagem de erro genérico
     }
     setShowPopup(false); // Fecha o popup após o login
+    navigate(window.location.reload());
   };
 
   const currentToken = getToken('token'); // Verifica se há token existente
